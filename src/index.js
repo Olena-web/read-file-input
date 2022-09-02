@@ -5,6 +5,8 @@ const fileSelector = document.getElementById('file-selector');
 const openFile = document.getElementById('open-file');
 const cert1 = document.querySelector('.cert1');
 const cert2 = document.querySelector('.cert2');
+const coding = document.querySelector('.name');
+console.log(coding.innerHTML);
 
 require([
     'https://unpkg.com/@lapo/asn1js/asn1.js',
@@ -14,7 +16,8 @@ require([
     cert1.innerText = ASN1.decode(Hex.decode('06032B6570')).content();
     fileSelector.addEventListener('change', (event) => {
         const fileList = event.target.files;
-        console.log(fileList);
+        console.log(fileList, fileList[0].name);
+        // coding.innerHTML = `${fileList.File.name}`;
 
         const result = ASN1.decode(Hex.decode(FileList)).content();
         console.log(result);
